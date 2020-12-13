@@ -23,6 +23,12 @@
       "date": "12/11/2020",
       "amount": "12.75",
       "location": "MTA"
+    },
+    {
+      "date": "12/13/2020",
+      "amount": "1.00",
+      "location": "Venmo",
+      "id": 5
     }
   ]
 }

@@ -2,12 +2,12 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import View from './view'
 import AddTransaction from './addTrancation'
-import Filter from './filter'
 import { Header, Radio } from 'semantic-ui-react'
 
 const Transactions = () => {
 
     const [transactions, setTransactions] = useState([])
+    const [viewBy, setViewBy ] = useState('None')
 
     useEffect(() => {
         fetch('http://localhost:3000/transactions')
@@ -34,7 +34,18 @@ const Transactions = () => {
         })
     }
 
+    const viewByHandler = (e) => {
+        setViewBy(e.target.innerText)
+    }
+    console.log(viewBy)
     let spreadTrans = [...transactions]
+
+    if(viewBy === 'Date'){
+        spreadTrans.sort((a,b) => a.date - b.date)
+    } else if
+      (viewBy === 'Amount'){
+          spreadTrans.sort((a,b) => a.amount - b.amount)
+      }
 
     return(
         <div>
@@ -42,9 +53,9 @@ const Transactions = () => {
             <div>
                 <Header as='h5' textAlign='center'>View By</Header>
                 <div className='radio'>
-                    <Radio label='None' value='none' />
-                    <Radio label='Date' value='date' />
-                    <Radio label='Amount' value='amount' />
+                    <Radio onClick={viewByHandler} name='radioGroup' label='None' value='none' checked={viewBy === 'None'}/>
+                    {/* <Radio onClick={viewByHandler} name='radioGroup' label='Date' value='date' checked={viewBy === 'Date'} /> */}
+                    <Radio onClick={viewByHandler} name='radioGroup' label='Amount' value='amount' checked={viewBy === 'Amount'}/>
                 </div>
             </div>
             <AddTransaction addTransaction={addTransaction} />
