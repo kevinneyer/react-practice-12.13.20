@@ -1,0 +1,28 @@
+{
+    "transactions": [
+        {
+            "id": 1,
+            "date": "12/13/2020",
+            "amount": "3.50",
+            "location": "Starbucks"
+        },
+        {
+            "id": 2,
+            "date": "12/12/2020",
+            "amount": "7.00",
+            "location": "Burger King"
+        },
+        {
+            "id": 3,
+            "date": "12/12/2020",
+            "amount": "11.00",
+            "location": "Costco"
+        },
+        {
+            "id": 4,
+            "date": "12/11/2020",
+            "amount": "12.75",
+            "location": "MTA"
+        }
+    ]
+}
