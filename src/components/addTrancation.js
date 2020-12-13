@@ -21,14 +21,17 @@ const AddTransaction = (props) => {
 
     const addOne = (e) => {
         e.preventDefault()
-        let body = {date: date, amount: amount, location: location}
         fetch('http://localhost:3000/transactions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'accept': 'application/json'
             },
-            body: JSON.stringify(body)
+            body: JSON.stringify({
+                date,
+                amount,
+                location
+            })
         })
         .then(res => res.json())
         .then( data => props.addTransaction(data))

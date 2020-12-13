@@ -3,7 +3,7 @@ import Transactions from './components/transactions'
 
 const App = () => {
   return (
-    <div>
+    <div className='app'>
       <Transactions />
     </div>
   )

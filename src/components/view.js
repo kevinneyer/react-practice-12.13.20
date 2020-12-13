@@ -3,7 +3,7 @@ import { Table, Button } from 'semantic-ui-react'
 
 const View = (props) => {
 
-    const{ transactions } = props
+    const{ transactions, deleteHandler } = props
 
     return(
         <div>
@@ -23,7 +23,7 @@ const View = (props) => {
                             <Table.Cell>{transaction.amount}</Table.Cell>
                             <Table.Cell>{transaction.location}</Table.Cell>
                             <Table.Cell textAlign='center'>
-                                <Button id={transaction.id} color='red'>Remove</Button>
+                                <Button id={transaction.id} onClick={() => deleteHandler(transaction.id)} color='red'>Remove</Button>
                             </Table.Cell>
                         </Table.Row>
                     )}   

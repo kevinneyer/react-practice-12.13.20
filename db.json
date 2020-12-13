@@ -23,18 +23,6 @@
       "date": "12/11/2020",
       "amount": "12.75",
       "location": "MTA"
-    },
-    {
-      "date": "12/20/2020",
-      "amount": "50.00",
-      "location": "Target",
-      "id": 5
-    },
-    {
-      "date": "12/13/2020",
-      "amount": "100.00",
-      "location": "QT",
-      "id": 11
     }
   ]
 }
