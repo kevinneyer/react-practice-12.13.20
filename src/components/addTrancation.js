@@ -50,7 +50,7 @@ const AddTransaction = (props) => {
                         <Form.Input onChange={amountHandler} value={amount} placeholder='Amount' />
                         <Form.Input onChange={locationHandler} value={location} placeholder='Location' />
                         <Form.Button color='green'>Add Transaction</Form.Button>
-                </Form.Group>
+                    </Form.Group>
                 </Form>
             </div>
         </div>

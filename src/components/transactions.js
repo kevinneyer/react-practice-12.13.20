@@ -2,12 +2,14 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import View from './view'
 import AddTransaction from './addTrancation'
+import Search from './search'
 import { Header, Radio } from 'semantic-ui-react'
 
 const Transactions = () => {
 
-    const [transactions, setTransactions] = useState([])
-    const [viewBy, setViewBy ] = useState('None')
+    const [ transactions, setTransactions ] = useState([])
+    const [ viewBy, setViewBy ] = useState('None')
+    const [ search, setSearch ] = useState('')
 
     useEffect(() => {
         fetch('http://localhost:3000/transactions')
@@ -37,8 +39,13 @@ const Transactions = () => {
     const viewByHandler = (e) => {
         setViewBy(e.target.innerText)
     }
-    console.log(viewBy)
+
+    const searchHandler = (e) => {
+        setSearch(e.target.value)
+    }
+   
     let spreadTrans = [...transactions]
+    spreadTrans = spreadTrans.filter(trans => trans.location.toLowerCase().includes(search.toLowerCase()))
 
     if(viewBy === 'Date'){
         spreadTrans.sort((a,b) => a.date - b.date)
@@ -47,6 +54,7 @@ const Transactions = () => {
           spreadTrans.sort((a,b) => a.amount - b.amount)
       }
 
+    console.log(search)
     return(
         <div>
             <Header as='h1' textAlign='center'>Transaction Ledger</Header>
@@ -58,6 +66,10 @@ const Transactions = () => {
                     <Radio onClick={viewByHandler} name='radioGroup' label='Amount' value='amount' checked={viewBy === 'Amount'}/>
                 </div>
             </div>
+            <Search 
+            searchHandler={searchHandler} 
+            search={search}
+            />
             <AddTransaction addTransaction={addTransaction} />
             <View 
             transactions={spreadTrans} 
