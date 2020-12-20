@@ -13,20 +13,22 @@ const View = (props) => {
                         <Table.HeaderCell>Date</Table.HeaderCell>
                         <Table.HeaderCell>Amount</Table.HeaderCell>
                         <Table.HeaderCell>Location</Table.HeaderCell>
+                        <Table.HeaderCell>Category</Table.HeaderCell>
                         <Table.HeaderCell>Remove</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {transactions.map(transaction => 
+                    {transactions.map(transaction =>
                         <Table.Row>
                             <Table.Cell>{transaction.date}</Table.Cell>
                             <Table.Cell>{transaction.amount}</Table.Cell>
                             <Table.Cell>{transaction.location}</Table.Cell>
+                            <Table.Cell>{transaction.category}</Table.Cell>
                             <Table.Cell textAlign='center'>
                                 <Button id={transaction.id} onClick={() => deleteHandler(transaction.id)} color='red'>Remove</Button>
                             </Table.Cell>
                         </Table.Row>
-                    )}   
+                    )}
                 </Table.Body>
             </Table>
         </div>

@@ -4,30 +4,35 @@
       "id": 1,
       "date": "12/13/2020",
       "amount": "3.50",
-      "location": "Starbucks"
+      "location": "Starbucks",
+      "category": "Food & Drink"
     },
     {
       "id": 2,
       "date": "12/12/2020",
       "amount": "7.00",
-      "location": "Burger King"
+      "location": "Burger King",
+      "category": "Food & Drink"
     },
     {
       "id": 3,
       "date": "12/12/2020",
       "amount": "11.00",
-      "location": "Costco"
+      "location": "Costco",
+      "category": "Shopping"
     },
     {
       "id": 4,
       "date": "12/11/2020",
       "amount": "12.75",
-      "location": "MTA"
+      "location": "MTA",
+      "category": "Transportation"
     },
     {
       "date": "12/13/2020",
-      "amount": "1.00",
+      "amount": "100.00",
       "location": "Venmo",
+      "category": "Bills & Utilities",
       "id": 5
     }
   ]
