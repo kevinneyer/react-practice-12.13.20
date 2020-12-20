@@ -11,6 +11,7 @@ const Transactions = () => {
     const [ transactions, setTransactions ] = useState([])
     const [ viewBy, setViewBy ] = useState('None')
     const [ search, setSearch ] = useState('')
+    const [ comments, setComments ] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:3000/transactions')
@@ -18,10 +19,19 @@ const Transactions = () => {
         .then(transactions => {
             setTransactions(transactions)
         })
+        fetch('http://localhost:3000/comments')
+        .then(res => res.json())
+        .then(comments => {
+            setComments(comments)
+        })
     }, [])
 
     const addTransaction = (transaction) => {
         setTransactions([...transactions, transaction])
+    }
+
+    const addComment = (comment) => {
+      setComments([...comments, comment])
     }
 
     const deleteHandler = (id) => {
@@ -55,7 +65,6 @@ const Transactions = () => {
           spreadTrans.sort((a,b) => a.amount - b.amount)
       }
 
-    console.log(search)
     return(
         <div>
             <Header as='h1' textAlign='center'>Transaction Ledger</Header>
@@ -75,8 +84,9 @@ const Transactions = () => {
             <View
             transactions={spreadTrans}
             deleteHandler={deleteHandler}
+            addComment={addComment}
             />
-            <Comments />
+            <Comments comments={comments}/>
         </div>
     )
 }

@@ -1,16 +1,19 @@
 import React from 'react'
 import { Button, Comment, Form, Header, Container, Segment } from 'semantic-ui-react'
 
-const Comments  = () => {
+const Comments  = (props) => {
+
   return(
     <div>
         <Segment>
           <Container fluid>
             <Header as='h3'>Comments</Header>
             <Comment>
-              <Comment.Content>
-                <Comment.Text>How artistic!</Comment.Text>
-              </Comment.Content>
+              {props.comments.map( comment =>
+                <Comment.Content>
+                  <Comment.Text>{comment.content}</Comment.Text>
+                </Comment.Content>
+              )}
             </Comment>
           </Container>
       </Segment>
