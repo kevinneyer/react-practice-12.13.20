@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Header, Form, Dropdown } from 'semantic-ui-react'
+import { Header, Form, Dropdown, Segment } from 'semantic-ui-react'
 
 const AddTransaction = (props) => {
 
@@ -72,6 +72,7 @@ const AddTransaction = (props) => {
 
     return(
         <div>
+          <Segment>
             <Header as='h3'>Add a Transaction</Header>
             <div>
                 <Form onSubmit={addOne}>
@@ -92,6 +93,7 @@ const AddTransaction = (props) => {
                     </Form.Group>
                 </Form>
             </div>
+          </Segment>
         </div>
     )
 }

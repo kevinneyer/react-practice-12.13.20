@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Button } from 'semantic-ui-react'
+import { Table, Button, Container } from 'semantic-ui-react'
 
 const View = (props) => {
 
@@ -7,6 +7,7 @@ const View = (props) => {
 
     return(
         <div>
+          <Container fluid>
             <Table celled>
                 <Table.Header>
                     <Table.Row>
@@ -31,6 +32,7 @@ const View = (props) => {
                     )}
                 </Table.Body>
             </Table>
+          </Container>
         </div>
     )
 }

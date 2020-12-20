@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import View from './view'
 import AddTransaction from './addTrancation'
 import Search from './search'
+import Comments from './comments'
 import { Header, Radio } from 'semantic-ui-react'
 
 const Transactions = () => {
@@ -18,7 +19,7 @@ const Transactions = () => {
             setTransactions(transactions)
         })
     }, [])
-  
+
     const addTransaction = (transaction) => {
         setTransactions([...transactions, transaction])
     }
@@ -31,7 +32,7 @@ const Transactions = () => {
             }
         })
         .then(() => {
-           let updatedTransactions = [...transactions] 
+           let updatedTransactions = [...transactions]
            setTransactions(updatedTransactions.filter(trans => trans.id !== id))
         })
     }
@@ -43,7 +44,7 @@ const Transactions = () => {
     const searchHandler = (e) => {
         setSearch(e.target.value)
     }
-   
+
     let spreadTrans = [...transactions]
     spreadTrans = spreadTrans.filter(trans => trans.location.toLowerCase().includes(search.toLowerCase()))
 
@@ -66,15 +67,16 @@ const Transactions = () => {
                     <Radio onClick={viewByHandler} name='radioGroup' label='Amount' value='amount' checked={viewBy === 'Amount'}/>
                 </div>
             </div>
-            <Search 
-            searchHandler={searchHandler} 
+            <Search
+            searchHandler={searchHandler}
             search={search}
             />
             <AddTransaction addTransaction={addTransaction} />
-            <View 
-            transactions={spreadTrans} 
+            <View
+            transactions={spreadTrans}
             deleteHandler={deleteHandler}
             />
+            <Comments />
         </div>
     )
 }
