@@ -34,6 +34,13 @@
       "location": "Venmo",
       "category": "Bills & Utilities",
       "id": 5
+    },
+    {
+      "date": "12/20/2020",
+      "amount": "7.39",
+      "location": "Whole Foods",
+      "category": "Food & Drink",
+      "id": 6
     }
   ]
 }
