@@ -39,8 +39,9 @@ const AddTransaction = (props) => {
     }
 
     const valueHandler = (e) => {
-      let date = e.toLocaleDateString()
-      setValue(new Date(date))
+      // let date = e
+      // console.log(e)
+      setValue(new Date(e))
   }
 
     const amountHandler = (e) => {
@@ -64,7 +65,7 @@ const AddTransaction = (props) => {
                 'accept': 'application/json'
             },
             body: JSON.stringify({
-                date: value.toDateString(),
+                date: value,
                 amount,
                 location,
                 category
@@ -81,7 +82,7 @@ const AddTransaction = (props) => {
     return(
         <div>
             <Header as='h3'>Add a Transaction</Header>
-            <div>
+            {/* <div> */}
                 <Form onSubmit={addOne}>
                     <Form.Group inline>
                         <Form.Input  >
@@ -104,7 +105,7 @@ const AddTransaction = (props) => {
                         <Form.Button color='green'>Add Transaction</Form.Button>
                     </Form.Group>
                 </Form>
-            </div>
+            {/* </div> */}
         </div>
     )
 }

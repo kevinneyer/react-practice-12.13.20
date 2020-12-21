@@ -46,7 +46,7 @@ const View = (props) => {
                 <Table.Body>
                     {transactions.map(transaction =>
                         <Table.Row>
-                            <Table.Cell>{transaction.date}</Table.Cell>
+                            <Table.Cell>{new Date(transaction.date).toLocaleDateString()}</Table.Cell>
                             <Table.Cell>{transaction.amount}</Table.Cell>
                             <Table.Cell>{transaction.location}</Table.Cell>
                             <Table.Cell>{transaction.category}</Table.Cell>

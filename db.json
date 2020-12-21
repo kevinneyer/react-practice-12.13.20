@@ -1,60 +1,25 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "date": "12/13/2020",
-      "amount": "3.50",
-      "location": "Starbucks",
-      "category": "Food & Drink"
-    },
-    {
-      "id": 2,
-      "date": "12/12/2020",
-      "amount": "7.00",
-      "location": "Burger King",
-      "category": "Food & Drink"
-    },
-    {
-      "id": 3,
-      "date": "12/12/2020",
-      "amount": "11.00",
-      "location": "Costco",
-      "category": "Shopping"
-    },
-    {
-      "id": 4,
-      "date": "12/11/2020",
-      "amount": "12.75",
-      "location": "MTA",
-      "category": "Transportation"
-    },
-    {
-      "date": "12/13/2020",
-      "amount": "100.00",
-      "location": "Venmo",
-      "category": "Bills & Utilities",
-      "id": 5
-    },
-    {
-      "date": "12/20/2020",
-      "amount": "7.39",
-      "location": "Whole Foods",
-      "category": "Food & Drink",
-      "id": 6
-    },
-    {
-      "date": "12/22/2020",
+      "date": "2020-12-21T05:00:00.000Z",
       "amount": "100",
-      "location": "MOOOO",
-      "category": "Bills & Utilities",
-      "id": 7
+      "location": "Hello",
+      "category": "Shopping",
+      "id": 1
     },
     {
-      "date": "Mon Dec 21 2020",
-      "amount": "75.00",
-      "location": "Hello World",
-      "category": "Bills & Utilities",
-      "id": 8
+      "date": "2020-12-18T05:00:00.000Z",
+      "amount": "4.50",
+      "location": "Taco Bell",
+      "category": "Food & Drink",
+      "id": 2
+    },
+    {
+      "date": "2020-12-22T05:00:00.000Z",
+      "amount": "89.00",
+      "location": "Space",
+      "category": "Transportation",
+      "id": 3
     }
   ],
   "comments": [
