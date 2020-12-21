@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Header, Form, Dropdown } from 'semantic-ui-react'
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
 
 const AddTransaction = (props) => {
 
@@ -7,6 +9,7 @@ const AddTransaction = (props) => {
     const [ amount, setAmount ] = useState('')
     const [ location, setLocation ] = useState('')
     const [ category, setCategory ] = useState('')
+    const [value, setValue ] = useState(new Date())
 
     const categoryOptions = [
       {
@@ -35,6 +38,11 @@ const AddTransaction = (props) => {
         setDate(e.target.value)
     }
 
+    const valueHandler = (e) => {
+      let date = e.toLocaleDateString()
+      setValue(new Date(date))
+  }
+
     const amountHandler = (e) => {
         setAmount(e.target.value)
     }
@@ -56,7 +64,7 @@ const AddTransaction = (props) => {
                 'accept': 'application/json'
             },
             body: JSON.stringify({
-                date,
+                date: value.toDateString(),
                 amount,
                 location,
                 category
@@ -69,14 +77,19 @@ const AddTransaction = (props) => {
         setLocation('')
         setCategory('')
     }
-
+    console.log(value)
     return(
         <div>
             <Header as='h3'>Add a Transaction</Header>
             <div>
                 <Form onSubmit={addOne}>
                     <Form.Group inline>
-                        <Form.Input onChange={dateHandler} value={date} placeholder='Date' />
+                        <Form.Input  >
+                          < Calendar 
+                            onChange={valueHandler}
+                            value={value}
+                          />
+                        </Form.Input>
                         <Form.Input onChange={amountHandler} value={amount} placeholder='Amount' />
                         <Form.Input onChange={locationHandler} value={location} placeholder='Location' />
                         <Form.Input>

@@ -41,6 +41,20 @@
       "location": "Whole Foods",
       "category": "Food & Drink",
       "id": 6
+    },
+    {
+      "date": "12/22/2020",
+      "amount": "100",
+      "location": "MOOOO",
+      "category": "Bills & Utilities",
+      "id": 7
+    },
+    {
+      "date": "Mon Dec 21 2020",
+      "amount": "75.00",
+      "location": "Hello World",
+      "category": "Bills & Utilities",
+      "id": 8
     }
   ],
   "comments": [
