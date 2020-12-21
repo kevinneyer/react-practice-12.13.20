@@ -59,7 +59,7 @@ const Transactions = () => {
     spreadTrans = spreadTrans.filter(trans => trans.location.toLowerCase().includes(search.toLowerCase()))
 
     if(viewBy === 'Date'){
-        spreadTrans.sort((a,b) => a.date - b.date)
+        spreadTrans.sort((a,b) => new Date(a.date) - new Date(b.date))
     } else if
       (viewBy === 'Amount'){
           spreadTrans.sort((a,b) => a.amount - b.amount)
@@ -72,7 +72,7 @@ const Transactions = () => {
                 <Header as='h5' textAlign='center'>View By</Header>
                 <div className='radio'>
                     <Radio onClick={viewByHandler} name='radioGroup' label='None' value='none' checked={viewBy === 'None'}/>
-                    {/* <Radio onClick={viewByHandler} name='radioGroup' label='Date' value='date' checked={viewBy === 'Date'} /> */}
+                    <Radio onClick={viewByHandler} name='radioGroup' label='Date' value='date' checked={viewBy === 'Date'} />
                     <Radio onClick={viewByHandler} name='radioGroup' label='Amount' value='amount' checked={viewBy === 'Amount'}/>
                 </div>
             </div>

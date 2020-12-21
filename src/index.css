@@ -24,3 +24,8 @@ code {
 .search{
   text-align: center;
 }
+
+.calendar{
+  height: 5em;
+  margin-bottom: 10em;
+}
