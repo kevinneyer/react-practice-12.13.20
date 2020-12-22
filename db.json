@@ -44,25 +44,5 @@
     }
   ],
   "comments": [
-    {
-      "id": 1,
-      "transaction_id": 1,
-      "content": "Present for Dad"
-    },
-    {
-      "content": "Hello Hello",
-      "transaction_id": 6,
-      "id": 2
-    },
-    {
-      "content": "Bonus for Steve",
-      "transaction_id": 6,
-      "id": 3
-    },
-    {
-      "content": "BOOOO",
-      "transaction_id": 6,
-      "id": 4
-    }
   ]
 }
