@@ -1,13 +1,6 @@
 {
   "transactions": [
     {
-      "date": "2020-12-21T05:00:00.000Z",
-      "amount": "100",
-      "location": "Hello",
-      "category": "Shopping",
-      "id": 1
-    },
-    {
       "date": "2020-12-18T05:00:00.000Z",
       "amount": "4.50",
       "location": "Taco Bell",
@@ -16,10 +9,38 @@
     },
     {
       "date": "2020-12-22T05:00:00.000Z",
-      "amount": "89.00",
-      "location": "Space",
+      "amount": "3.45",
+      "location": "Dunkin Donuts",
+      "category": "Food & Drink",
+      "id": 4
+    },
+    {
+      "date": "2020-12-22T20:06:18.555Z",
+      "amount": "5.67",
+      "location": "Stumptown",
+      "category": "Food & Drink",
+      "id": 5
+    },
+    {
+      "date": "2020-11-24T05:00:00.000Z",
+      "amount": "75.00",
+      "location": "Astor Place Wines",
+      "category": "Food & Drink",
+      "id": 6
+    },
+    {
+      "date": "2020-11-01T04:00:00.000Z",
+      "amount": "500.00",
+      "location": "Rent Payment",
+      "category": "Bills & Utilities",
+      "id": 7
+    },
+    {
+      "date": "2020-11-02T05:00:00.000Z",
+      "amount": "43.50",
+      "location": "Shell",
       "category": "Transportation",
-      "id": 3
+      "id": 8
     }
   ],
   "comments": [

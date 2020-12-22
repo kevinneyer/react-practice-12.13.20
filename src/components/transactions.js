@@ -86,7 +86,7 @@ const Transactions = () => {
             deleteHandler={deleteHandler}
             addComment={addComment}
             />
-            <Comments comments={comments}/>
+            {/* <Comments comments={comments}/> */}
         </div>
     )
 }
