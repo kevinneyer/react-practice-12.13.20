@@ -4,6 +4,9 @@ import { Table, Button, Container, Modal, Header, TextArea } from 'semantic-ui-r
 const View = (props) => {
   
   const{ transactions, deleteHandler } = props
+  const amounts = transactions.map(transaction => parseInt(transaction.amount))
+  let total = amounts.reduce((a,b) => (a+ b), 0)
+
   const [open, setOpen ] = useState(false)
   const [comment, setComment] = useState('')
 
@@ -28,6 +31,8 @@ const View = (props) => {
     setOpen(false)
     setComment('')
   }
+
+  console.log(amounts)
 
   return(
     <div>
@@ -83,6 +88,12 @@ const View = (props) => {
                   </Table.Cell>
                 </Table.Row>
               )}
+              <Table.Row>
+              <Table.Header>
+                <Table.HeaderCell>Total Spent</Table.HeaderCell>
+                <Table.Cell>{total}</Table.Cell>
+                </Table.Header>
+              </Table.Row>
             </Table.Body>
           </Table>
         :

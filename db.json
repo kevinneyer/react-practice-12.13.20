@@ -29,13 +29,6 @@
       "id": 6
     },
     {
-      "date": "2020-11-01T04:00:00.000Z",
-      "amount": "500.00",
-      "location": "Rent Payment",
-      "category": "Bills & Utilities",
-      "id": 7
-    },
-    {
       "date": "2020-11-02T05:00:00.000Z",
       "amount": "43.50",
       "location": "Shell",
@@ -43,6 +36,5 @@
       "id": 8
     }
   ],
-  "comments": [
-  ]
+  "comments": []
 }
