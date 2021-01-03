@@ -1,13 +1,18 @@
 export const categoryOptions = [
     {
-      key: 'Food & Drink',
-      text: 'Food & Drink',
-      value: 'Food & Drink'
+      key: 'Shopping',
+      text: 'Shopping',
+      value: 'Shopping'
     },
     {
-      key: 'Bills & Utilities',
-      text: 'Bills & Utilities',
-      value: 'Bills & Utilities'
+      key: 'Groceries',
+      text: 'Groceries',
+      value: 'Groceries'
+    },
+    {
+      key: 'Household',
+      text: 'Household',
+      value: 'Household'
     },
     {
       key: 'Transportation',
@@ -15,8 +20,28 @@ export const categoryOptions = [
       value: 'Transportation'
     },
     {
-      key: 'Shopping',
-      text: 'Shopping',
-      value: 'Shopping'
+      key: 'Restaurant',
+      text: 'Restaurant',
+      value: 'Restaurant'
+    },
+    {
+      key: 'Drinks',
+      text: 'Drinks',
+      value: 'Drinks'
+    },
+    {
+      key: 'Entertainment',
+      text: 'Entertainment',
+      value: 'Entertainment'
+    },
+    {
+      key: 'Pet',
+      text: 'Pet',
+      value: 'Pet'
+    },
+    {
+      key: 'Children',
+      text: 'Children',
+      value: 'Children'
     }
   ]

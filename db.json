@@ -4,28 +4,28 @@
       "date": "2020-12-18T05:00:00.000Z",
       "amount": "4.50",
       "location": "Taco Bell",
-      "category": "Food & Drink",
+      "category": "Restaurant",
       "id": 2
     },
     {
       "date": "2020-12-22T05:00:00.000Z",
       "amount": "3.45",
       "location": "Dunkin Donuts",
-      "category": "Food & Drink",
+      "category": "Restaurant",
       "id": 4
     },
     {
       "date": "2020-12-22T20:06:18.555Z",
       "amount": "5.67",
       "location": "Stumptown",
-      "category": "Food & Drink",
+      "category": "Drinks",
       "id": 5
     },
     {
       "date": "2020-11-24T05:00:00.000Z",
       "amount": "75.00",
       "location": "Astor Place Wines",
-      "category": "Food & Drink",
+      "category": "Shopping",
       "id": 6
     },
     {
