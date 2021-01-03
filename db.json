@@ -5,6 +5,7 @@
       "amount": "4.50",
       "location": "Taco Bell",
       "category": "Restaurant",
+      "comments": null,
       "id": 2
     },
     {
@@ -12,6 +13,7 @@
       "amount": "3.45",
       "location": "Dunkin Donuts",
       "category": "Restaurant",
+      "comments": null,
       "id": 4
     },
     {
@@ -19,6 +21,7 @@
       "amount": "5.67",
       "location": "Stumptown",
       "category": "Drinks",
+      "comments": null,
       "id": 5
     },
     {
@@ -26,6 +29,7 @@
       "amount": "75.00",
       "location": "Astor Place Wines",
       "category": "Shopping",
+      "comments": null,
       "id": 6
     },
     {
@@ -33,6 +37,7 @@
       "amount": "43.50",
       "location": "Shell",
       "category": "Transportation",
+      "comments": null,
       "id": 8
     },
     {
@@ -40,6 +45,7 @@
       "amount": "9.69",
       "location": "Home Depot",
       "category": "Shopping",
+      "comments": null,
       "id": 9
     }
   ],

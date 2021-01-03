@@ -45,7 +45,7 @@ const View = (props) => {
                     <Table.HeaderCell>Amount</Table.HeaderCell>
                     <Table.HeaderCell>Location</Table.HeaderCell>
                     <Table.HeaderCell>Category</Table.HeaderCell>
-                    <Table.HeaderCell>Add Comment</Table.HeaderCell>
+                    <Table.HeaderCell>Comments</Table.HeaderCell>
                     <Table.HeaderCell>Remove</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
