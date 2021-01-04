@@ -5,7 +5,7 @@
       "amount": "4.50",
       "location": "Taco Bell",
       "category": "Restaurant",
-      "comments": null,
+      "comments": "Testing",
       "id": 2
     },
     {
@@ -13,7 +13,7 @@
       "amount": "3.45",
       "location": "Dunkin Donuts",
       "category": "Restaurant",
-      "comments": null,
+      "comments": "Iced Coffee",
       "id": 4
     },
     {
@@ -45,7 +45,7 @@
       "amount": "9.69",
       "location": "Home Depot",
       "category": "Shopping",
-      "comments": null,
+      "comments": "Test",
       "id": 9
     }
   ],
