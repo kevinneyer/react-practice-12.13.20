@@ -9,30 +9,38 @@ const View = (props) => {
 
   const [open, setOpen ] = useState(false)
   const [comment, setComment] = useState('')
+  const [id, setId] = useState(null)
 
   const commentChangeHandler = (e) => {
     setComment(e.target.value)
   }
 
+  const idHandler = (e) => {
+    setId(e.target.id)
+  }
+
+  const clearId = () => {
+    setId(null)
+    setOpen(false)
+  }
+
   const commentSubmitHandler = (id) =>{
-    fetch('http://localhost:3000/comments', {
-      method: 'POST',
+    fetch(`http://localhost:3000/transactions/${id}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         'Accepts': 'application.json'
       },
       body: JSON.stringify({
-        content: comment,
-        transaction_id: id
+        comments: comment
       })
     })
     .then(res => res.json())
-    .then(comment => props.addComment(comment))
+    .then(data => props.addComment(data))
     setOpen(false)
     setComment('')
+    setId(null)
   }
-
-  console.log(amounts)
 
   return(
     <div>
@@ -56,12 +64,15 @@ const View = (props) => {
                   <Table.Cell>{transaction.amount}</Table.Cell>
                   <Table.Cell>{transaction.location}</Table.Cell>
                   <Table.Cell>{transaction.category}</Table.Cell>
-                  <Table.Cell textAlign='center'>
+                  {transaction.comments ? 
+                  (<Table.Cell>{transaction.comments}</Table.Cell>)
+                  :
+                  (<Table.Cell textAlign='center'>
                     <Modal
                       onClose={() => setOpen(false)}
                       onOpen={() => setOpen(true)}
                       open={open}
-                      trigger={<Button color='blue'>Add Comment</Button>}
+                      trigger={<Button id={transaction.id} color='blue' onClick={idHandler}>Add a Comment</Button>}
                     >
                       <Modal.Header>Write a Comment</Modal.Header>
                       <Modal.Content>
@@ -70,19 +81,20 @@ const View = (props) => {
                         </Modal.Description>
                       </Modal.Content>
                       <Modal.Actions>
-                        <Button color='black' onClick={() => setOpen(false)}>
+                        <Button color='black' onClick={clearId}>
                           Cancel
                         </Button>
                         <Button
-                          content="Submit"
                           labelPosition='right'
+                          content='Add Comment'
                           icon='checkmark'
-                          onClick={() => commentSubmitHandler(transaction.id)}
+                          onClick={() => commentSubmitHandler(id)}
                           positive
                         />
                       </Modal.Actions>
                     </Modal>
-                  </Table.Cell>
+                  </Table.Cell>)
+                  }
                   <Table.Cell textAlign='center'>
                       <Button id={transaction.id} onClick={() => deleteHandler(transaction.id)} color='red'>Remove</Button>
                   </Table.Cell>

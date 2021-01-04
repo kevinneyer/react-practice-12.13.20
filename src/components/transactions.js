@@ -11,7 +11,7 @@ const Transactions = () => {
     const [ transactions, setTransactions ] = useState([])
     const [ viewBy, setViewBy ] = useState('None')
     const [ search, setSearch ] = useState('')
-    const [ comments, setComments ] = useState([])
+    // const [ comments, setComments ] = useState([])
     const [ month, setMonth ] = useState('None')
 
     useEffect(() => {
@@ -31,8 +31,14 @@ const Transactions = () => {
         setTransactions([...transactions, transaction])
     }
 
-    const addComment = (comment) => {
-      setComments([...comments, comment])
+    const addComment = (trans) => {
+        let newTransactions = transactions.map( transaction => {
+            if(transaction.id === trans.id){
+             return {...transaction, comments: trans.comments}
+            } 
+            return transaction
+           })
+           setTransactions(newTransactions)
     }
 
     const deleteHandler = (id) => {
