@@ -3,13 +3,14 @@ import { Table, Button, Container, Modal, Header, TextArea } from 'semantic-ui-r
 
 const View = (props) => {
   
-  const{ transactions, deleteHandler } = props
+  const{ transactions, deleteHandler, updateComment, month } = props
   const amounts = transactions.map(transaction => parseFloat(transaction.amount))
   let total = amounts.reduce((a,b) => (a+ b), 0)
 
   const [open, setOpen ] = useState(false)
   const [comment, setComment] = useState('')
   const [id, setId] = useState(null)
+  const [editComment, setEditComment] = useState(false)
 
   const commentChangeHandler = (e) => {
     setComment(e.target.value)
@@ -22,6 +23,7 @@ const View = (props) => {
   const clearId = () => {
     setId(null)
     setOpen(false)
+    setEditComment(false)
   }
 
   const commentSubmitHandler = (id) =>{
@@ -36,10 +38,11 @@ const View = (props) => {
       })
     })
     .then(res => res.json())
-    .then(data => props.updateComment(data))
+    .then(data => updateComment(data))
     setOpen(false)
     setComment('')
     setId(null)
+    setEditComment(false)
   }
 
   const deleteComment = (id) => {
@@ -54,7 +57,7 @@ const View = (props) => {
       })
     })
     .then(res => res.json())
-    .then(data => props.updateComment(data))
+    .then(data => updateComment(data))
   }
 
   return(
@@ -82,7 +85,33 @@ const View = (props) => {
                   {transaction.comments ? 
                   (<Table.Cell>
                     {transaction.comments}
+                    <Modal
+                      onClose={() => setEditComment(false)}
+                      onOpen={() => setEditComment(true)}
+                      open={editComment}
+                      trigger={<Button id={transaction.id} color='facebook' onClick={idHandler}>Edit Comment</Button>}
+                    >
+                      <Modal.Header>Edit Comment</Modal.Header>
+                      <Modal.Content>
+                        <Modal.Description>
+                          <TextArea onChange={commentChangeHandler}>{transaction.comments}</TextArea>
+                        </Modal.Description>
+                      </Modal.Content>
+                      <Modal.Actions>
+                        <Button color='black' onClick={clearId}>
+                          Cancel
+                        </Button>
+                        <Button
+                          labelPosition='right'
+                          content='Submit'
+                          icon='checkmark'
+                          onClick={() => commentSubmitHandler(id)}
+                          positive
+                        />
+                      </Modal.Actions>
+                    </Modal>
                     <Button color='black' onClick={() => deleteComment(transaction.id)}>Delete</Button>
+                    
                   </Table.Cell>)
                   :
                   (<Table.Cell textAlign='center'>
@@ -127,7 +156,7 @@ const View = (props) => {
             </Table.Body>
           </Table>
         :
-          <Header textAlign='center' as='h3'>No Transactions for {props.month}!</Header>
+          <Header textAlign='center' as='h3'>No Transactions for {month}!</Header>
         }
       </Container>
     </div>
