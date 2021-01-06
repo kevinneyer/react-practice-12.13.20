@@ -11,7 +11,6 @@ const Transactions = () => {
     const [ transactions, setTransactions ] = useState([])
     const [ viewBy, setViewBy ] = useState('None')
     const [ search, setSearch ] = useState('')
-    // const [ comments, setComments ] = useState([])
     const [ month, setMonth ] = useState('None')
 
     useEffect(() => {
@@ -20,11 +19,6 @@ const Transactions = () => {
         .then(transactions => {
             setTransactions(transactions)
         })
-        // fetch('http://localhost:3000/comments')
-        // .then(res => res.json())
-        // .then(comments => {
-        //     setComments(comments)
-        // })
     }, [])
 
     const addTransaction = (transaction) => {
@@ -37,8 +31,8 @@ const Transactions = () => {
              return {...transaction, comments: trans.comments}
             } 
             return transaction
-           })
-           setTransactions(newTransactions)
+        })
+        setTransactions(newTransactions)
     }
 
     const deleteHandler = (id) => {
@@ -78,7 +72,7 @@ const Transactions = () => {
     }
 
     if (month === 'January'){
-        spreadTrans = spreadTrans.filter( (trans) => new Date(trans.date).getMonth() === 0)
+        spreadTrans = spreadTrans.filter( trans => new Date(trans.date).getMonth() === 0)
     }
     else if (month === 'February'){
         spreadTrans = spreadTrans.filter( trans => new Date(trans.date).getMonth() === 1)
@@ -137,14 +131,15 @@ const Transactions = () => {
             searchHandler={searchHandler}
             search={search}
             />
-            <AddTransaction addTransaction={addTransaction} />
+            <AddTransaction 
+            addTransaction={addTransaction} 
+            />
             <View
             transactions={spreadTrans}
             deleteHandler={deleteHandler}
             updateComment={updateComment}
             month={month}
             />
-            {/* <Comments comments={comments}/> */}
         </>
     )
 }

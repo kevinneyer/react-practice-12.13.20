@@ -5,12 +5,12 @@ const View = (props) => {
   
   const{ transactions, deleteHandler, updateComment, month } = props
   const amounts = transactions.map(transaction => parseFloat(transaction.amount))
-  let total = amounts.reduce((a,b) => (a+ b), 0)
+  const total = amounts.reduce((a,b) => (a+ b), 0)
 
-  const [open, setOpen ] = useState(false)
-  const [comment, setComment] = useState('')
-  const [id, setId] = useState(null)
-  const [editComment, setEditComment] = useState(false)
+  const [ open, setOpen ] = useState(false)
+  const [ comment, setComment ] = useState('')
+  const [ id, setId ] = useState(null)
+  const [ editComment, setEditComment ] = useState(false)
 
   const commentChangeHandler = (e) => {
     setComment(e.target.value)
@@ -83,64 +83,63 @@ const View = (props) => {
                   <Table.Cell>{transaction.location}</Table.Cell>
                   <Table.Cell>{transaction.category}</Table.Cell>
                   {transaction.comments ? 
-                  (<Table.Cell>
-                    {transaction.comments}
-                    <Modal
-                      onClose={() => setEditComment(false)}
-                      onOpen={() => setEditComment(true)}
-                      open={editComment}
-                      trigger={<Button id={transaction.id} color='facebook' onClick={idHandler}>Edit Comment</Button>}
-                    >
-                      <Modal.Header>Edit Comment</Modal.Header>
-                      <Modal.Content>
-                        <Modal.Description>
-                          <TextArea onChange={commentChangeHandler}>{transaction.comments}</TextArea>
-                        </Modal.Description>
-                      </Modal.Content>
-                      <Modal.Actions>
-                        <Button color='black' onClick={clearId}>
-                          Cancel
-                        </Button>
-                        <Button
-                          labelPosition='right'
-                          content='Submit'
-                          icon='checkmark'
-                          onClick={() => commentSubmitHandler(id)}
-                          positive
-                        />
-                      </Modal.Actions>
-                    </Modal>
-                    <Button color='black' onClick={() => deleteComment(transaction.id)}>Delete</Button>
-                    
-                  </Table.Cell>)
+                    (<Table.Cell>
+                      {transaction.comments}
+                      <Modal
+                        onClose={() => setEditComment(false)}
+                        onOpen={() => setEditComment(true)}
+                        open={editComment}
+                        trigger={<Button id={transaction.id} color='facebook' onClick={idHandler}>Edit Comment</Button>}
+                      >
+                        <Modal.Header>Edit Comment</Modal.Header>
+                        <Modal.Content>
+                          <Modal.Description>
+                            <TextArea onChange={commentChangeHandler}>{transaction.comments}</TextArea>
+                          </Modal.Description>
+                        </Modal.Content>
+                        <Modal.Actions>
+                          <Button color='black' onClick={clearId}>
+                            Cancel
+                          </Button>
+                          <Button
+                            labelPosition='right'
+                            content='Submit'
+                            icon='checkmark'
+                            onClick={() => commentSubmitHandler(id)}
+                            positive
+                          />
+                        </Modal.Actions>
+                      </Modal>
+                      <Button color='black' onClick={() => deleteComment(transaction.id)}>Delete</Button>
+                    </Table.Cell>)
                   :
-                  (<Table.Cell textAlign='center'>
-                    <Modal
-                      onClose={() => setOpen(false)}
-                      onOpen={() => setOpen(true)}
-                      open={open}
-                      trigger={<Button id={transaction.id} color='blue' onClick={idHandler}>Add a Comment</Button>}
-                    >
-                      <Modal.Header>Write a Comment</Modal.Header>
-                      <Modal.Content>
-                        <Modal.Description>
-                          <TextArea onChange={commentChangeHandler}/>
-                        </Modal.Description>
-                      </Modal.Content>
-                      <Modal.Actions>
-                        <Button color='black' onClick={clearId}>
-                          Cancel
-                        </Button>
-                        <Button
-                          labelPosition='right'
-                          content='Add Comment'
-                          icon='checkmark'
-                          onClick={() => commentSubmitHandler(id)}
-                          positive
-                        />
-                      </Modal.Actions>
-                    </Modal>
-                  </Table.Cell>)
+                    (<Table.Cell textAlign='center'>
+                      <Modal
+                        onClose={() => setOpen(false)}
+                        onOpen={() => setOpen(true)}
+                        open={open}
+                        trigger={<Button id={transaction.id} color='blue' onClick={idHandler}>Add a Comment</Button>}
+                      >
+                        <Modal.Header>Write a Comment</Modal.Header>
+                        <Modal.Content>
+                          <Modal.Description>
+                            <TextArea onChange={commentChangeHandler}/>
+                          </Modal.Description>
+                        </Modal.Content>
+                        <Modal.Actions>
+                          <Button color='black' onClick={clearId}>
+                            Cancel
+                          </Button>
+                          <Button
+                            labelPosition='right'
+                            content='Add Comment'
+                            icon='checkmark'
+                            onClick={() => commentSubmitHandler(id)}
+                            positive
+                          />
+                        </Modal.Actions>
+                      </Modal>
+                    </Table.Cell>)
                   }
                   <Table.Cell textAlign='center'>
                       <Button id={transaction.id} onClick={() => deleteHandler(transaction.id)} color='red'>Remove</Button>
@@ -150,7 +149,7 @@ const View = (props) => {
               <Table.Row>
               <Table.Header>
                 <Table.HeaderCell>Total Spent</Table.HeaderCell>
-                <Table.Cell>{total.toFixed(2)}</Table.Cell>
+                  <Table.Cell>{total.toFixed(2)}</Table.Cell>
                 </Table.Header>
               </Table.Row>
             </Table.Body>

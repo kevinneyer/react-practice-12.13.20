@@ -4,6 +4,7 @@ import { Header, Input } from 'semantic-ui-react'
 const Search = (props) => {
 
     const { searchHandler, search } = props
+    
     return(
         <div className='search'>
             <Header as='h3'>Search Transactions</Header>
