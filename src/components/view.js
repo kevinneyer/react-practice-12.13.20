@@ -36,10 +36,25 @@ const View = (props) => {
       })
     })
     .then(res => res.json())
-    .then(data => props.addComment(data))
+    .then(data => props.updateComment(data))
     setOpen(false)
     setComment('')
     setId(null)
+  }
+
+  const deleteComment = (id) => {
+    fetch(`http://localhost:3000/transactions/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accepts': 'application.json'
+      },
+      body: JSON.stringify({
+        comments: null
+      })
+    })
+    .then(res => res.json())
+    .then(data => props.updateComment(data))
   }
 
   return(
@@ -65,7 +80,10 @@ const View = (props) => {
                   <Table.Cell>{transaction.location}</Table.Cell>
                   <Table.Cell>{transaction.category}</Table.Cell>
                   {transaction.comments ? 
-                  (<Table.Cell>{transaction.comments}</Table.Cell>)
+                  (<Table.Cell>
+                    {transaction.comments}
+                    <Button color='black' onClick={() => deleteComment(transaction.id)}>Delete</Button>
+                  </Table.Cell>)
                   :
                   (<Table.Cell textAlign='center'>
                     <Modal

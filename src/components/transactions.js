@@ -31,7 +31,7 @@ const Transactions = () => {
         setTransactions([...transactions, transaction])
     }
 
-    const addComment = (trans) => {
+    const updateComment = (trans) => {
         let newTransactions = transactions.map( transaction => {
             if(transaction.id === trans.id){
              return {...transaction, comments: trans.comments}
@@ -141,7 +141,7 @@ const Transactions = () => {
             <View
             transactions={spreadTrans}
             deleteHandler={deleteHandler}
-            addComment={addComment}
+            updateComment={updateComment}
             month={month}
             />
             {/* <Comments comments={comments}/> */}
