@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import View from './view'
 import AddTransaction from './addTrancation'
 import Search from './search'
+import Graph from './graph'
 import { monthOptions } from './monthOptions'
 import { Header, Radio, Dropdown } from 'semantic-ui-react'
 
@@ -140,6 +141,7 @@ const Transactions = () => {
             updateComment={updateComment}
             month={month}
             />
+            <Graph transactions={transactions}/>
         </>
     )
 }
