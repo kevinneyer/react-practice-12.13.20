@@ -1,27 +1,28 @@
 import React from 'react'
 import { categoryOptions } from '../categoryOptions'
 import { Chart } from "react-google-charts";
-import { FormTextArea } from 'semantic-ui-react';
 
 const Graph = (props) => {
+    
     const { transactions } = props
-    // const array = transactions.map(transaction => [transaction.category, parseFloat(transaction.amount)])
-    // console.log(array)
-    // let array = []
-    // const results = []
 
-    // for(let i = 0; i < categoryOptions.length; i++){
-    //     array.push(transactions.filter(trans => trans.category === categoryOptions[i].value))
-    // }
-    // console.log(array)
+    let array = []
+    let results = []
 
-    // for(let j = 0; j < array.length; j++){
-    //     if(!!array[j]){
-    //         let quantity = array[j].reduce((a,b) => (a.amount, b.amount), 0)
-    //         results.push(array[j].category, quantity)
-    //     }
-    // }
-    // console.log(results)
+    for(let i = 0; i < categoryOptions.length; i++){
+        array.push(transactions.filter(trans => trans.category === categoryOptions[i].value))
+    }
+
+    for(let j = 0; j < array.length; j++){
+        if(array[j].length > 0){
+            let total = 0
+            array[j].forEach(arr => total += parseFloat(arr.amount))
+            results.push([array[j][0].category, total])
+        }
+    }
+
+    results.unshift(['Category', 'Amount'])
+
     return(
         <div>
             <Chart
@@ -29,20 +30,13 @@ const Graph = (props) => {
                 height={'300px'}
                 chartType="PieChart"
                 loader={<div>Loading Chart</div>}
-                data={[
-                    ['Task', 'Hours per Day'],
-                    // ['Eat', 2],
-                    // ['Commute', 2],
-                    // ['Watch TV', 2],
-                    // ['Sleep', 7],
-                ]}
+                data={ results }
                 options={{
-                    title: 'My Daily Activities',
-                    // Just add this option
+                    title: 'My Spending per Category',
                     is3D: true,
                 }}
-                rootProps={{ 'data-testid': '2' }}
-/>
+                rootProps={{ 'data-testid': '2' }}  
+            />
         </div>
     )
 }
