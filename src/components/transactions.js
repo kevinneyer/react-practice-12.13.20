@@ -141,7 +141,7 @@ const Transactions = () => {
             updateComment={updateComment}
             month={month}
             />
-            <Graph transactions={transactions}/>
+            <Graph transactions={spreadTrans}/>
         </>
     )
 }

@@ -3,7 +3,7 @@ import { categoryOptions } from '../categoryOptions'
 import { Chart } from "react-google-charts";
 
 const Graph = (props) => {
-    
+
     const { transactions } = props
 
     let array = []
@@ -26,8 +26,8 @@ const Graph = (props) => {
     return(
         <div>
             <Chart
-                width={'500px'}
-                height={'300px'}
+                width={'800px'}
+                height={'500px'}
                 chartType="PieChart"
                 loader={<div>Loading Chart</div>}
                 data={ results }
