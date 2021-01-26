@@ -6,6 +6,7 @@
       "location": "Taco Bell",
       "category": "Restaurant",
       "comments": null,
+      "type": "withdrawl",
       "id": 2
     },
     {
@@ -14,6 +15,7 @@
       "location": "Dunkin Donuts",
       "category": "Restaurant",
       "comments": null,
+      "type": "withdrawl",
       "id": 4
     },
     {
@@ -22,6 +24,7 @@
       "location": "Stumptown",
       "category": "Drinks",
       "comments": null,
+      "type": "withdrawl",
       "id": 5
     },
     {
@@ -30,6 +33,7 @@
       "location": "Astor Place Wines",
       "category": "Shopping",
       "comments": null,
+      "type": "withdrawl",
       "id": 6
     },
     {
@@ -38,6 +42,7 @@
       "location": "Shell",
       "category": "Transportation",
       "comments": null,
+      "type": "withdrawl",
       "id": 8
     },
     {
@@ -46,6 +51,7 @@
       "location": "Home Depot",
       "category": "Shopping",
       "comments": null,
+      "type": "withdrawl",
       "id": 9
     }
   ],

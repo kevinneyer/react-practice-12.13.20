@@ -10,6 +10,9 @@ const AddTransaction = (props) => {
   const [ amount, setAmount ] = useState('')
   const [ location, setLocation ] = useState('')
   const [ category, setCategory ] = useState('')
+  const [ type, setType ] = useState('')
+
+  const types = [ {key: 'withdrawl', value: 'withdrawl', text: 'withdrawl' },{ key: 'deposit', value: 'deposit', text: 'deposit' }]
 
   const dateHandler = (e) => {
       setDate(new Date(e))
@@ -27,6 +30,10 @@ const AddTransaction = (props) => {
     setCategory(e.target.innerText)
   }
 
+  const typeHandler = (e) =>{
+    setType(e.target.innerText)
+  }
+
   const addOne = (e) => {
     e.preventDefault();
     fetch('http://localhost:3000/transactions', {
@@ -39,7 +46,8 @@ const AddTransaction = (props) => {
             date,
             amount,
             location,
-            category
+            category,
+            type
         })
     })
     .then(res => res.json())
@@ -70,6 +78,15 @@ const AddTransaction = (props) => {
               options={categoryOptions}
               onChange={categoryHandler}
               value={category}
+            />
+          </Form.Input>
+          <Form.Input>
+            <Dropdown
+              placeholder='Select Type...'
+              selection
+              options={types}
+              onChange={typeHandler}
+              value={type}
             />
           </Form.Input>
           <Form.Button color='green'>Add Transaction</Form.Button>

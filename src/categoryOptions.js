@@ -1,4 +1,9 @@
 export const categoryOptions = [
+  {
+    key: 'Deposit',
+    text: 'Deposit',
+    value: 'Deposit'
+  },
     {
       key: 'Shopping',
       text: 'Shopping',

@@ -4,7 +4,7 @@ import { Table, Button, Container, Modal, Header, TextArea } from 'semantic-ui-r
 const View = (props) => {
   
   const{ transactions, deleteHandler, updateComment, month } = props
-  const amounts = transactions.map(transaction => parseFloat(transaction.amount))
+  const amounts = transactions.map(transaction => transaction.type === 'withdrawl' ? parseFloat(transaction.amount) : null)
   const total = amounts.reduce((a,b) => (a+ b), 0)
 
   const [ open, setOpen ] = useState(false)
@@ -71,6 +71,7 @@ const View = (props) => {
                     <Table.HeaderCell>Amount</Table.HeaderCell>
                     <Table.HeaderCell>Location</Table.HeaderCell>
                     <Table.HeaderCell>Category</Table.HeaderCell>
+                    <Table.HeaderCell>Type</Table.HeaderCell>
                     <Table.HeaderCell>Comments</Table.HeaderCell>
                     <Table.HeaderCell>Remove</Table.HeaderCell>
                 </Table.Row>
@@ -79,9 +80,10 @@ const View = (props) => {
               {transactions.map(transaction =>
                 <Table.Row>
                   <Table.Cell>{new Date(transaction.date).toLocaleDateString()}</Table.Cell>
-                  <Table.Cell>{transaction.amount}</Table.Cell>
+                  <Table.Cell>{transaction.type === 'withdrawl' ? `-${transaction.amount}` : `+${transaction.amount}`}</Table.Cell>
                   <Table.Cell>{transaction.location}</Table.Cell>
                   <Table.Cell>{transaction.category}</Table.Cell>
+                  <Table.Cell>{transaction.type}</Table.Cell>
                   {transaction.comments ? 
                     (<Table.Cell>
                       {transaction.comments}

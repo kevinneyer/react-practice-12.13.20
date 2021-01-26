@@ -9,7 +9,7 @@ const Graph = (props) => {
     let array = []
     let results = []
 
-    for(let i = 0; i < categoryOptions.length; i++){
+    for(let i = 1; i < categoryOptions.length; i++){
         array.push(transactions.filter(trans => trans.category === categoryOptions[i].value))
     }
 
