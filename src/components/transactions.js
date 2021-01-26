@@ -5,6 +5,7 @@ import AddTransaction from './addTrancation'
 import Search from './search'
 import Graph from './graph'
 import { monthOptions } from './monthOptions'
+import { yearOptions } from './yearOptions'
 import { Header, Radio, Dropdown } from 'semantic-ui-react'
 
 const Transactions = () => {
@@ -12,7 +13,8 @@ const Transactions = () => {
     const [ transactions, setTransactions ] = useState([])
     const [ viewBy, setViewBy ] = useState('None')
     const [ search, setSearch ] = useState('')
-    const [ month, setMonth ] = useState('None')
+    const [ month, setMonth ] = useState( monthOptions[new Date().getMonth() + 1].value)
+    const [ year, setYear ] = useState(new Date().getFullYear())
 
     useEffect(() => {
         fetch('http://localhost:3000/transactions')
@@ -61,12 +63,16 @@ const Transactions = () => {
         setMonth(e.target.innerText)
     }
 
+    const yearHandler = (e) => {
+        setYear(e.target.innerText)
+    }
+
     let spreadTrans = [...transactions]
 
     spreadTrans = spreadTrans.filter(trans => trans.location.toLowerCase().includes(search.toLowerCase()))
 
     if(viewBy === 'Date'){
-        spreadTrans.sort((a,b) => new Date(a.date) - new Date(b.date))
+        spreadTrans.sort((a,b) => new Date(a.date) < new Date(b.date) ? 1 : -1)
     } else if
       (viewBy === 'Amount'){
           spreadTrans.sort((a,b) => a.amount - b.amount)
@@ -109,23 +115,35 @@ const Transactions = () => {
         spreadTrans = spreadTrans.filter( trans => new Date(trans.date).getMonth() === 11)
     }
    
+    if( year ){
+        spreadTrans = spreadTrans.filter( trans => new Date(trans.date).getFullYear() == year )
+    }
+   
     return(
         <>
             <Header as='h1' textAlign='center'>Transaction Ledger</Header>
             <div>
                 <Header as='h5' textAlign='center'>View By</Header>
                 <div className='radio'>
-                    <Radio onClick={viewByHandler} name='radioGroup' label='None' value='none' checked={viewBy === 'None'}/>
-                    <Radio onClick={viewByHandler} name='radioGroup' label='Date' value='date' checked={viewBy === 'Date'} />
-                    <Radio onClick={viewByHandler} name='radioGroup' label='Amount' value='amount' checked={viewBy === 'Amount'}/>
+                    <Radio onClick={viewByHandler} name='radioGroup' label='None' value='none' checked={viewBy === 'None'} className='radio'/>
+                    <Radio onClick={viewByHandler} name='radioGroup' label='Date' value='date' checked={viewBy === 'Date'}  className='radio' />
+                    <Radio onClick={viewByHandler} name='radioGroup' label='Amount' value='amount' checked={viewBy === 'Amount'}  className='radio'/>
+                    <div className='dropdowns'>
                     <Dropdown 
                     text={month}
-                    search
                     selection
                     options={monthOptions}
                     value={month}
                     onChange={monthHandler}
                     />
+                    <Dropdown 
+                    text={year}
+                    selection
+                    options={yearOptions}
+                    value={year}
+                    onChange={yearHandler}
+                    />
+                    </div>
                 </div>
             </div>
             <Search

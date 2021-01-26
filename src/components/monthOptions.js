@@ -1,5 +1,5 @@
 export const monthOptions = [
-    { key: 'None', value: 'None', text:'None' },
+    { key: 'All', value: 'All', text:'All' },
     { key: 'January', value: 'January', text: 'January' },
     { key: 'February', value: 'February', text: 'February' },
     { key: 'March', value: 'March', text: 'March' },
