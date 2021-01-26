@@ -13,7 +13,7 @@ const Transactions = () => {
     const [ transactions, setTransactions ] = useState([])
     const [ viewBy, setViewBy ] = useState('None')
     const [ search, setSearch ] = useState('')
-    const [ month, setMonth ] = useState('None')
+    const [ month, setMonth ] = useState( monthOptions[new Date().getMonth() + 1].value)
     const [ year, setYear ] = useState(new Date().getFullYear())
 
     useEffect(() => {
@@ -72,7 +72,7 @@ const Transactions = () => {
     spreadTrans = spreadTrans.filter(trans => trans.location.toLowerCase().includes(search.toLowerCase()))
 
     if(viewBy === 'Date'){
-        spreadTrans.sort((a,b) => new Date(a.date) - new Date(b.date))
+        spreadTrans.sort((a,b) => new Date(a.date) < new Date(b.date) ? 1 : -1)
     } else if
       (viewBy === 'Amount'){
           spreadTrans.sort((a,b) => a.amount - b.amount)
@@ -125,9 +125,10 @@ const Transactions = () => {
             <div>
                 <Header as='h5' textAlign='center'>View By</Header>
                 <div className='radio'>
-                    <Radio onClick={viewByHandler} name='radioGroup' label='None' value='none' checked={viewBy === 'None'}/>
-                    <Radio onClick={viewByHandler} name='radioGroup' label='Date' value='date' checked={viewBy === 'Date'} />
-                    <Radio onClick={viewByHandler} name='radioGroup' label='Amount' value='amount' checked={viewBy === 'Amount'}/>
+                    <Radio onClick={viewByHandler} name='radioGroup' label='None' value='none' checked={viewBy === 'None'} className='radio'/>
+                    <Radio onClick={viewByHandler} name='radioGroup' label='Date' value='date' checked={viewBy === 'Date'}  className='radio' />
+                    <Radio onClick={viewByHandler} name='radioGroup' label='Amount' value='amount' checked={viewBy === 'Amount'}  className='radio'/>
+                    <div className='dropdowns'>
                     <Dropdown 
                     text={month}
                     selection
@@ -142,6 +143,7 @@ const Transactions = () => {
                     value={year}
                     onChange={yearHandler}
                     />
+                    </div>
                 </div>
             </div>
             <Search
