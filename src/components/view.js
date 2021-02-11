@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Table, Button, Container, Modal, Header, TextArea } from 'semantic-ui-react'
+import { Table, Button, Container, Modal, Header, TextArea, Tab } from 'semantic-ui-react'
 
 const View = (props) => {
   
@@ -8,7 +8,7 @@ const View = (props) => {
   const total = amounts.reduce((a,b) => (a+ b), 0)
   const deposits = transactions.map(transaction => transaction.type === 'deposit' ? parseFloat(transaction.amount) : null)
   const depositTotal = deposits.reduce((a,b) => (a+b), 0)
-  const balance = depositTotal - total
+  let balance = 0
 
   const [ open, setOpen ] = useState(false)
   const [ comment, setComment ] = useState('')
@@ -27,6 +27,15 @@ const View = (props) => {
     setId(null)
     setOpen(false)
     setEditComment(false)
+  }
+
+  const balanceHandler = (transaction) => {
+    if(transaction.type === 'withdrawl'){
+      balance -= transaction.amount
+    } else if(transaction.type === 'deposit'){
+      balance += parseInt(transaction.amount)
+    }
+    return parseInt(balance).toFixed(2)
   }
 
   const commentSubmitHandler = (id) =>{
@@ -77,6 +86,7 @@ const View = (props) => {
                     <Table.HeaderCell>Type</Table.HeaderCell>
                     <Table.HeaderCell>Comments</Table.HeaderCell>
                     <Table.HeaderCell>Remove</Table.HeaderCell>
+                    <Table.HeaderCell>Balance</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -149,6 +159,9 @@ const View = (props) => {
                   <Table.Cell textAlign='center'>
                       <Button id={transaction.id} onClick={() => deleteHandler(transaction.id)} color='red'>Remove</Button>
                   </Table.Cell>
+
+               
+                  <Table.Cell>{balanceHandler(transaction)}</Table.Cell>
                 </Table.Row>
               )}
               {/* <Table.Row>
@@ -158,7 +171,12 @@ const View = (props) => {
                 </Table.Header>
               </Table.Row> */}
             </Table.Body>
-            <Table.Body>
+          </Table>
+        :
+          <Header textAlign='center' as='h3'>No Transactions for {month}!</Header>
+        }
+        {/* <Table>
+        <Table.Body>
             <Table.Row>
               <Table.Header>
                 <Table.HeaderCell>Balance</Table.HeaderCell>
@@ -166,10 +184,7 @@ const View = (props) => {
                 </Table.Header>
               </Table.Row>
             </Table.Body>
-          </Table>
-        :
-          <Header textAlign='center' as='h3'>No Transactions for {month}!</Header>
-        }
+        </Table> */}
       </Container>
     </div>
   )
