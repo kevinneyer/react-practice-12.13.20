@@ -61,6 +61,30 @@
       "category": "Groceries",
       "type": "withdrawl",
       "id": 10
+    },
+    {
+      "date": "2021-02-11T21:34:22.438Z",
+      "amount": "25.00",
+      "location": "Venmo",
+      "category": "Deposit",
+      "type": "deposit",
+      "id": 11
+    },
+    {
+      "date": "2021-02-11T21:36:57.233Z",
+      "amount": "25.00",
+      "location": "ATM",
+      "category": "Deposit",
+      "type": "deposit",
+      "id": 12
+    },
+    {
+      "date": "2021-02-11T05:00:00.000Z",
+      "amount": "30.00",
+      "location": "Burger King",
+      "category": "Restaurant",
+      "type": "withdrawl",
+      "id": 13
     }
   ]
 }
