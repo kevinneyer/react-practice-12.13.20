@@ -56,6 +56,7 @@ const AddTransaction = (props) => {
     setAmount('')
     setLocation('')
     setCategory('')
+    setType('')
   }
   
   return(

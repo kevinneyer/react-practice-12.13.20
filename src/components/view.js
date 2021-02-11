@@ -6,6 +6,9 @@ const View = (props) => {
   const{ transactions, deleteHandler, updateComment, month } = props
   const amounts = transactions.map(transaction => transaction.type === 'withdrawl' ? parseFloat(transaction.amount) : null)
   const total = amounts.reduce((a,b) => (a+ b), 0)
+  const deposits = transactions.map(transaction => transaction.type === 'deposit' ? parseFloat(transaction.amount) : null)
+  const depositTotal = deposits.reduce((a,b) => (a+b), 0)
+  const balance = depositTotal - total
 
   const [ open, setOpen ] = useState(false)
   const [ comment, setComment ] = useState('')
@@ -80,7 +83,7 @@ const View = (props) => {
               {transactions.map(transaction =>
                 <Table.Row>
                   <Table.Cell>{new Date(transaction.date).toLocaleDateString()}</Table.Cell>
-                  <Table.Cell>{transaction.type === 'withdrawl' ? `-${transaction.amount}` : `+${transaction.amount}`}</Table.Cell>
+                  {transaction.type === 'withdrawl' ? <Table.Cell className='negative'>-${transaction.amount}</Table.Cell>: <Table.Cell className='positive'>+${transaction.amount}</Table.Cell>}
                   <Table.Cell>{transaction.location}</Table.Cell>
                   <Table.Cell>{transaction.category}</Table.Cell>
                   <Table.Cell>{transaction.type}</Table.Cell>
@@ -148,10 +151,18 @@ const View = (props) => {
                   </Table.Cell>
                 </Table.Row>
               )}
-              <Table.Row>
+              {/* <Table.Row>
               <Table.Header>
-                <Table.HeaderCell>Total Spent</Table.HeaderCell>
-                  <Table.Cell>{total.toFixed(2)}</Table.Cell>
+                <Table.HeaderCell>Total Deposited</Table.HeaderCell>
+                  <Table.Cell>{deposits.length > 0 ? depositTotal.toFixed(2) : 0}</Table.Cell>
+                </Table.Header>
+              </Table.Row> */}
+            </Table.Body>
+            <Table.Body>
+            <Table.Row>
+              <Table.Header>
+                <Table.HeaderCell>Balance</Table.HeaderCell>
+                  {balance > 0 ? <Table.Cell className='positive'>{balance.toFixed(2)}</Table.Cell> : <Table.Cell className='negative'>{balance.toFixed(2)}</Table.Cell>}
                 </Table.Header>
               </Table.Row>
             </Table.Body>
